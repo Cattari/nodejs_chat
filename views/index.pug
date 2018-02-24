@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    script(
+      src="https://code.jquery.com/jquery-2.2.4.min.js",
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=",
+        crossorigin="anonymous"
+    )
+    link(
+      rel="stylesheet",
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css",
+    )
+    link(
+      rel="stylesheet",
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u",
+      crossorigin="anonymous"
+    )
+    link(
+      rel="stylesheet",
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css",
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp",
+      crossorigin="anonymous"
+    )
+    script(
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js",
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa",
+      crossorigin="anonymous"
+    )
+
+    script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"
+    )
+
+    link(
+      rel="stylesheet",
+      href="css/main.css"
+    )
+    script(
+      src="js/main.js"
+    )
+    title= title
+  body
+    h1= pageHeading
+    .container
+      .row
+        .col-md-5
+          .panel.panel-primary
+            .panel-heading
+              span.glyphicon.glyphicon-comment
+              |  Chat
+              .btn-group.pull-right
+                button.btn.btn-default.btn-xs.dropdown-toggle(type='button', data-toggle='dropdown')
+                  span.glyphicon.glyphicon-chevron-down
+                ul.dropdown-menu.slidedown
+                  li
+                    a(href='http://www.jquery2dotnet.com')
+                      span.glyphicon.glyphicon-refresh
+                      | Refresh
+                  li
+                    a(href='http://www.jquery2dotnet.com')
+                      span.glyphicon.glyphicon-ok-sign
+                      | Available
+                  li
+                    a(href='http://www.jquery2dotnet.com')
+                      span.glyphicon.glyphicon-remove
+                      | Busy
+                  li
+                    a(href='http://www.jquery2dotnet.com')
+                      span.glyphicon.glyphicon-time
+                      |                                 Away
+                  li.divider
+                  li
+                    a(href='http://www.jquery2dotnet.com')
+                      span.glyphicon.glyphicon-off
+                      |                                 Sign Out
+            .panel-body
+              ul.chat
+                each messageItem in messages
+                  li.left.clearfix
+                    span.chat-img.pull-left
+                      img.img-circle(src='http://placehold.it/50/55C1E7/fff&text=U', alt='User Avatar')
+                    .chat-body.clearfix
+                      .header
+                        strong.primary-font=messageItem.userName
+                      p=messageItem.message
+            .panel-footer
+              .input-group
+                input#btn-input.form-control.input-sm(type='text', placeholder='Type your message here...')
+                span.input-group-btn
+                  button#btn-chat.btn.btn-warning.btn-sm
+                    | Send
+    .modal.fade.bs-example-modal-lg(
+      id="hello-modal",
+      tabindex='-1',
+      role='dialog',
+      aria-labelledby='myLargeModalLabel'
+    )
+      .modal-dialog.modal-lg(role='document')
+        .modal-content
+          .container
+            p Print your name, please:
+            .input-group
+              input.form-control#user-name-input
+              button.btn.btn-primary#user-name-submit Submit
